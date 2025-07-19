@@ -18,7 +18,7 @@ const Dashboard = () => {
             <div className="flex items-center gap-3">
               {stat.icon}
               <div>
-                <p className="text-sm text-gray-600">{stat.label}</p>
+                <p className="text-l text-gray-600">{stat.label}</p>
               </div>
             </div>
             <div className="border-l h-8 mx-2"></div>

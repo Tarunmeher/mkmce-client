@@ -51,8 +51,8 @@ const Sidebar = () => {
       <div className="flex items-center justify-between bg-yellow-400 text-black px-4 py-3">
         {isOpen && (
           <div className="flex items-center gap-2">
-            <img src="https://img.icons8.com/ios-filled/50/graduation-cap.png" alt="logo" className="w-5 h-5" />
-            <span className="font-bold text-lg">MKMCE</span>
+            <img src="https://img.icons8.com/ios-filled/50/graduation-cap.png" alt="logo" className="w-8 h-8" />
+            <span className="font-bold text-xl">MKMCE Portal</span>
           </div>
         )}
         <button onClick={toggleSidebar} className="text-black ml-auto">
@@ -65,7 +65,7 @@ const Sidebar = () => {
         <div className="flex items-center justify-between p-3 hover:bg-blue-800 cursor-pointer">
           <div className="flex items-center gap-3">
             <Home className="w-5 h-5 text-yellow-400" />
-            {isOpen && <span className="font-medium text-sm">Dashboard</span>}
+            {isOpen && <span className="font-medium text-l">Dashboard</span>}
           </div>
         </div>
       </Link>
@@ -80,7 +80,7 @@ const Sidebar = () => {
             >
               <div className="flex items-center gap-3">
                 {item.icon}
-                {isOpen && <span className="text-sm font-medium">{item.label}</span>}
+                {isOpen && <span className="text-l font-medium">{item.label}</span>}
               </div>
               {isOpen && (
                 openDropdowns[item.label] ? (
