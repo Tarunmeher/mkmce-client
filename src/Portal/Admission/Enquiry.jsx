@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -54,6 +55,7 @@ const Enquiry = () => {
   return (
     <div className="p-4  mx-auto">
       <ToastContainer />
+      <p className="text-sm text-gray-500 mb-4 cursor-pointer"><Link to='/'>Home</Link> - <span className="text-blue-600">Enquiry Form</span></p>
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded flex flex-col space-y-4">
         <h2 className="text-xl font-semibold border-b pb-2">Enquiry Form</h2>
 

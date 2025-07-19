@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="w-full flex items-center justify-between px-6 py-2 bg-white shadow">
       {/* Left Section */}
       <div className="flex items-center gap-3">
-        <img src="/logo.png" alt="Logo" className="w-6 h-6 opacity-40" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKg87vKCHZ5XdNBZqE1z4QEKeNX1ki2TNOMA&s" alt="Logo" className="w-6 h-6" />
         <h1 className="text-sm sm:text-base font-semibold">
           Welcome To <span className="text-black">MKMCE</span>
           <span className="text-gray-400 ml-1">School Management System</span>
@@ -36,7 +36,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
           <img
-            src="/profile.jpg"
+            src="https://cdn.pixabay.com/photo/2024/08/30/14/02/ai-generated-9009341_1280.jpg"
             alt="User"
             className="w-8 h-8 rounded-full object-cover"
           />
