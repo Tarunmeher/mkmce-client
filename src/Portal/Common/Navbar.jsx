@@ -15,11 +15,6 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="flex items-center gap-4">
-        <div className="flex items-center text-sm gap-1">
-          <Globe className="w-4 h-4" />
-          <span>English</span>
-        </div>
-
         <Mail className="w-5 h-5 text-sky-500" />
         <div className="relative">
           <Bell className="w-5 h-5 text-orange-500" />
