@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ViewEnquiryListModal from './ViewEnquiryListModal';
+import { Link } from 'react-router-dom';
 
 const Enquiry = () => {
   const classList = "w-full border p-2 rounded focus:outline-none";
@@ -63,10 +64,10 @@ const Enquiry = () => {
   return (
     <div className="p-4 mx-auto">
       <ToastContainer autoClose={2000} />
-
+      <p className="text-sm text-gray-500 mb-4 cursor-pointer"><Link to='/'>Home </Link>- <span className="text-blue-600">Enquiry Form</span></p>
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded space-y-4">
         <div className="flex justify-between items-center mb-4 border-b pb-2">
-          <h2 className="text-xl font-semibold">Enquiry Form</h2>
+          <h2 className="text-xl font-bold">Enquiry Form</h2>
           <button
             type="button"
             onClick={() => setShowModal(true)}
@@ -108,7 +109,7 @@ const Enquiry = () => {
         />
 
         <div className="flex flex-col">
-          <label htmlFor="dob" className="text-sm font-medium text-gray-700">
+          <label htmlFor="dob" className="text-sm font-semibold text-gray-700">
             Date of Birth
           </label>
           <input

@@ -1,4 +1,5 @@
 import { Bell, Mail, Globe } from 'lucide-react';
+import { portalinfo } from '../../portalInfo.js'
 
 const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar = () => {
       <div className="flex items-center gap-3">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKg87vKCHZ5XdNBZqE1z4QEKeNX1ki2TNOMA&s" alt="Logo" className="w-6 h-6" />
         <h1 className="text-lg  font-semibold">
-          Welcome To <span className="text-black">MKMCE</span>
+          Welcome To <span className="text-black">{portalinfo.title}</span>
           <span className="text-gray-400 ml-1"> School Management System Portal</span>
         </h1>
       </div>
@@ -28,7 +29,7 @@ const Navbar = () => {
             className="w-8 h-8 rounded-full object-cover"
           />
           <div className="text-sm">
-            <div className="font-medium">Dusmant Meher</div>
+            <div className="font-medium">Chandrahashya Meher</div>
           </div>
         </div>
       </div>
