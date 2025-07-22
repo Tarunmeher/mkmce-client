@@ -32,14 +32,7 @@ const menuItems = [
       { to: '/student/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Student' },
       { to: '/student/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Student' },
     ],
-  },
-    {
-    label: 'Teachers',
-    icon: <Users className="w-5 h-5 text-yellow-400" />,
-    subItems: [
-      { to: '/teacher/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Teacher' },
-    ],
-  },
+  }
   // ... (keep your other items as is)
 ];
 

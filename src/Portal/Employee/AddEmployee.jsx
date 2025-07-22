@@ -8,7 +8,7 @@ const AddTeacher = () => {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
-        typeOfStaff: "",
+        typeOfEmployee: "",
         gender: "",
         dob: "",
         socialCategory: "",
@@ -53,7 +53,7 @@ const AddTeacher = () => {
         setFormData({
             firstName: "",
             lastName: "",
-            typeOfStaff: "",
+            typeOfEmployee: "",
             gender: "",
             dob: "",
             socialCategory: "",
@@ -84,13 +84,13 @@ const AddTeacher = () => {
                 <Link to="/">Home </Link>- <span className="text-blue-600">Add New Teacher</span>
             </p>
             <div className="bg-white p-6 shadow rounded-md">
-                <h2 className="text-xl font-semibold mb-4">Teacher Information</h2>
+                <h2 className="text-xl font-semibold mb-4">Employee Information</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <input name="firstName" autoComplete="off" value={formData.firstName} onChange={handleChange} placeholder="First Name" required className={inputClass} />
                         <input name="lastName" autoComplete="off" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required className={inputClass} />
-                        <select name="typeOfStaff" value={formData.typeOfStaff} onChange={handleChange} required className={inputClass}>
-                            <option value="">Type of Staff</option>
+                        <select name="typeOfEmployee" value={formData.typeOfEmployee} onChange={handleChange} required className={inputClass}>
+                            <option value="">Employee Type</option>
                             <option value="Teaching">Teaching</option>
                             <option value="Non-Teaching">Non-Teaching</option>
                         </select>
@@ -100,10 +100,6 @@ const AddTeacher = () => {
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
                         </select>
-                        <div>
-                            <label className="block text-sm text-gray-600 mb-1">Date of Birth</label>
-                            <input type="date" name="dob" value={formData.dob} onChange={handleChange} required className={inputClass} />
-                        </div>
                         <select name="socialCategory" value={formData.socialCategory} onChange={handleChange} required className={inputClass}>
                             <option value="">Social Category</option>
                             <option value="General">General</option>
@@ -139,6 +135,10 @@ const AddTeacher = () => {
                         <input name="aadhar" autoComplete="off" value={formData.aadhar} onChange={handleChange} placeholder="Aadhar Number" required className={inputClass} />
                         <input type="email" autoComplete="off" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required className={inputClass} />
                         <input name="nameAsPerAadhar" autoComplete="off" value={formData.nameAsPerAadhar} onChange={handleChange} placeholder="Name As Per Aadhar" required className={inputClass} />
+                        <div>
+                            <label className="block text-sm text-gray-600 mb-1">Date of Birth</label>
+                            <input type="date" name="dob" value={formData.dob} onChange={handleChange} required className={inputClass} />
+                        </div>
                     </div>
 
                     <h3 className="font-semibold text-lg mt-6 mb-2">Mention the level up to which following subjects are studied</h3>
