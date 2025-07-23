@@ -14,6 +14,8 @@ const menuItems = [
     subItems: [
       { to: '/admission/enquiry', icon: <FileQuestion className="w-4 h-4 text-yellow-400" />, label: 'Enquiry' },
       { to: '/admission/register', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Register New Student' },
+      { to: '/admission/admission-form', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Admission' },
+
 
     ],
   },
