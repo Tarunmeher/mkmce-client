@@ -5,6 +5,7 @@ import Dashboard from './Portal/Dashboard/Dashboard';
 import Enquiry from './Portal/Admission/Enquiry';
 import RegisterNewStudent from './Portal/Admission/RegisterNewStudent';
 import AddEmployee from './Portal/Employee/AddEmployee';
+import Admission from './Portal/Admission/Admission';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route index element={<Dashboard />} />
         <Route path="/admission/enquiry" element={<Enquiry />} />
         <Route path='/admission/register' element={<RegisterNewStudent />} />
+        <Route path='/admission/admission-form' element={<Admission />} />
         <Route path='/employee/add' element={<AddEmployee />} />
       </Route>
     </Routes>

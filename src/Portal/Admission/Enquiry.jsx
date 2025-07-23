@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ViewEnquiryListModal from './ViewEnquiryListModal';
 import { Link } from 'react-router-dom';
+import { portalinfo } from '../../portalInfo.js'
+
 
 const Enquiry = () => {
   const classList = "w-full border p-2 rounded focus:outline-none";
@@ -170,10 +172,10 @@ const Enquiry = () => {
         />
 
         <div className="flex flex-wrap gap-4 pt-4">
-          <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">
+          <button type="submit" className={`${portalinfo.bgColor} text-white px-4 py-2 rounded`}>
             Submit
           </button>
-          <button type="button" onClick={handleReset} className="bg-gray-600 text-white px-4 py-2 rounded">
+          <button type="button" onClick={handleReset} className={`${portalinfo.bgColor_2} text-white px-4 py-2 rounded`}>
             Reset
           </button>
         </div>
