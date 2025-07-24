@@ -6,6 +6,7 @@ import Enquiry from './Portal/Admission/Enquiry';
 import RegisterNewStudent from './Portal/Admission/RegisterNewStudent';
 import AddEmployee from './Portal/Employee/AddEmployee';
 import Admission from './Portal/Admission/Admission';
+import ManageEmployee from './Portal/Employee/ManageEmployee';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/admission/register' element={<RegisterNewStudent />} />
         <Route path='/admission/admission-form' element={<Admission />} />
         <Route path='/employee/add' element={<AddEmployee />} />
+        <Route path='/employee/manage' element={<ManageEmployee />} />
       </Route>
     </Routes>
   );

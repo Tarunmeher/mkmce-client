@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { portalinfo } from '../../portalInfo.js'
+import { Link, useLocation } from 'react-router-dom'; // ✅ useLocation added
+import { portalinfo } from '../../portalInfo.js';
 
 import {
   Users, FileQuestion,
@@ -15,8 +15,6 @@ const menuItems = [
       { to: '/admission/enquiry', icon: <FileQuestion className="w-4 h-4 text-yellow-400" />, label: 'Enquiry' },
       { to: '/admission/register', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Register New Student' },
       { to: '/admission/admission-form', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Admission' },
-
-
     ],
   },
   {
@@ -34,13 +32,13 @@ const menuItems = [
       { to: '/student/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Student' },
       { to: '/student/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Student' },
     ],
-  }
-  // ... (keep your other items as is)
+  },
 ];
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [openDropdowns, setOpenDropdowns] = useState({});
+  const location = useLocation(); // ✅ Get current path
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -68,9 +66,9 @@ const Sidebar = () => {
 
       {/* Dashboard */}
       <Link to='/'>
-        <div className="flex items-center justify-between p-3 hover:bg-blue-800 cursor-pointer">
+        <div className={`flex items-center justify-between p-3 cursor-pointer ${location.pathname === '/' ? 'bg-yellow-400 text-black' : 'hover:bg-blue-800'}`}>
           <div className="flex items-center gap-3">
-            <Home className="w-5 h-5 text-yellow-400" />
+            <Home className={`w-5 h-5 ${location.pathname === '/' ? 'text-black' : 'text-yellow-400'}`} />
             {isOpen && <span className="font-medium text-l">Dashboard</span>}
           </div>
         </div>
@@ -100,26 +98,21 @@ const Sidebar = () => {
             {/* Sub Items */}
             {openDropdowns[item.label] && isOpen && (
               <div className="ml-10 text-sm text-gray-300 space-y-1 py-1">
-                {item.subItems.map((sub, idx) => (
-                  sub.to ? (
+                {item.subItems.map((sub, idx) => {
+                  const isActive = location.pathname === sub.to;
+                  return (
                     <Link
                       key={idx}
                       to={sub.to}
-                      className="flex items-center gap-2 cursor-pointer hover:text-yellow-400"
+                      className={`flex items-center gap-2 cursor-pointer hover:text-yellow-400 ${isActive ? 'text-yellow-400 font-semibold' : ''}`}
                     >
-                      {sub.icon}
+                      <div className={`w-4 h-4 ${isActive ? 'text-yellow-400' : 'text-yellow-400'}`}>
+                        {sub.icon}
+                      </div>
                       <span>{sub.label}</span>
                     </Link>
-                  ) : (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 cursor-pointer hover:text-yellow-400"
-                    >
-                      {sub.icon}
-                      <span>{sub.label}</span>
-                    </div>
-                  )
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
