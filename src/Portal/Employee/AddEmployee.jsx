@@ -187,7 +187,7 @@ const AddTeacher = () => {
                     </div>
 
                     <div className="mt-6 flex gap-4">
-                        <button type="submit" className={`${portalinfo.bgColor} text-black px-6 py-2 rounded hover:bg-yellow-500`}>Save</button>
+                        <button type="submit" className={`${portalinfo.bgColor} text-white px-6 py-2 rounded hover:bg-yellow-500`}>Save</button>
                         <button type="button" onClick={handleReset} className={`${portalinfo.bgColor_2}text-white px-6 py-2 rounded hover:bg-blue-800`}>Reset</button>
                     </div>
                 </form>
