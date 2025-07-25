@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Edit, Eye, Pen, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EditStudentModal from './EditStudentModal';
+import ViewStudentModal from './ViewStudentModal';
 
 const ManageStudent = () => {
   const inputClass = "border px-2 py-1 rounded w-full focus:outline-none";
@@ -27,6 +28,10 @@ const ManageStudent = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
+
+  const [viewData, setViewData] = useState(null);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+
 
   //Function to open the modal with data
   const openEditModal = (student) => {
@@ -62,6 +67,14 @@ const ManageStudent = () => {
       setStudents((prev) => prev.filter((s) => s.id !== id));
     }
   };
+
+
+  // View student details
+  const openViewModal = (student) => {
+    setViewData(student);
+    setIsViewModalOpen(true);
+  };
+
 
 
   const filteredStudents = students.filter((s) => {
@@ -145,7 +158,7 @@ const ManageStudent = () => {
                   <td className="p-2 border">{e.mobile}</td>
                   <td className="p-2 border">{e.email}</td>
                   <td className="p-2 border flex gap-2 items-center">
-                    <Eye className="w-4 h-4 text-gray-700 cursor-pointer" />
+                    <Eye onClick={() => openViewModal(e)} className="w-4 h-4 text-gray-700 cursor-pointer" />
                     <Pen onClick={() => openEditModal(e)} className="w-4 h-4 text-green-600 cursor-pointer" />
                     <Trash2 onClick={() => handleDelete(e.id)} className="w-4 h-4 text-red-600 cursor-pointer" />
                   </td>
@@ -160,6 +173,12 @@ const ManageStudent = () => {
         studentData={editData}
         onChange={handleInputChange}
         onSubmit={handleUpdate} />
+
+      <ViewStudentModal
+        isOpen={isViewModalOpen}
+        onClose={() => setIsViewModalOpen(false)}
+        student={viewData}
+      />
     </div>
   );
 };
