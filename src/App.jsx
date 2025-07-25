@@ -7,6 +7,8 @@ import RegisterNewStudent from './Portal/Admission/RegisterNewStudent';
 import AddEmployee from './Portal/Employee/AddEmployee';
 import Admission from './Portal/Admission/Admission';
 import ManageEmployee from './Portal/Employee/ManageEmployee';
+import ManageStudent from './Portal/Student/ManageStudent';
+import AddStudent from './Portal/Student/AddStudents';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
         <Route path='/admission/admission-form' element={<Admission />} />
         <Route path='/employee/add' element={<AddEmployee />} />
         <Route path='/employee/manage' element={<ManageEmployee />} />
+        <Route path="/student/add" element={<AddStudent />} />
+        <Route path="/student/manage" element={<ManageStudent />} />
       </Route>
     </Routes>
   );

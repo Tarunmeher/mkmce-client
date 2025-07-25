@@ -104,7 +104,7 @@ const ManageEmployee = () => {
                                             <img
                                                 src={e.photo}
                                                 alt={e.name}
-                                                className="w-8 h-8 rounded-full"
+                                                className="w-8 h-8 rounded-full cursor-pointer "
                                             />
                                         </td>
                                         <td className="p-2 border">{e.name}</td>
