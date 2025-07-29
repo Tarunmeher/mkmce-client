@@ -76,7 +76,7 @@ const ManageStudent = () => {
   };
 
 
-
+// filtered students based on search criteria
   const filteredStudents = students.filter((s) => {
     return (
       s.id.includes(searchId) &&

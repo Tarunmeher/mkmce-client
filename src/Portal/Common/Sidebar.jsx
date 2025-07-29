@@ -29,8 +29,16 @@ const menuItems = [
     label: 'Students',
     icon: <Users className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/student/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Student' },
       { to: '/student/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Student' },
+    ],
+  },
+  {
+    label: 'Academic',
+    icon: <Users className="w-5 h-5 text-yellow-400" />,
+    subItems: [
+      { to: '/Academic/classmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Class Management' },
+      { to: '/Academic/syllabusmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Syllabus Management' },
+      { to: '/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Time Table Management' },
     ],
   },
 ];

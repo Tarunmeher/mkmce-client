@@ -8,7 +8,9 @@ import AddEmployee from './Portal/Employee/AddEmployee';
 import Admission from './Portal/Admission/Admission';
 import ManageEmployee from './Portal/Employee/ManageEmployee';
 import ManageStudent from './Portal/Student/ManageStudent';
-import AddStudent from './Portal/Student/AddStudents';
+import ClassManagement from './Portal/Academic/ClassManagement';
+import SyllabusManagement from './Portal/Academic/SyllabusManagement';
+import TimeTableManagement from './Portal/Academic/TimeTableManagement';
 
 const App = () => {
   return (
@@ -20,8 +22,10 @@ const App = () => {
         <Route path='/admission/admission-form' element={<Admission />} />
         <Route path='/employee/add' element={<AddEmployee />} />
         <Route path='/employee/manage' element={<ManageEmployee />} />
-        <Route path="/student/add" element={<AddStudent />} />
         <Route path="/student/manage" element={<ManageStudent />} />
+        <Route path="/Academic/classmanagement" element={<ClassManagement />} />
+        <Route path="/Academic/syllabusmanagement" element={<SyllabusManagement />} />
+        <Route path="/Academic/timetablemanagement" element={<TimeTableManagement />} />
       </Route>
     </Routes>
   );
