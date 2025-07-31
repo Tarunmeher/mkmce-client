@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import apiRequest from "../../../services/apiService";
+import ConfirmModal from '../Common/ConfirmModal';
 
 const AddStudentForm = () => {
   const inputClass = "border p-2 rounded focus:outline-none";
   const [form, setForm] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleConfirm = () => {
+    setShowModal(false);
+  };
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -24,7 +31,8 @@ const AddStudentForm = () => {
         form
       );
       if (response && response.success) {
-        toast.success("Registration successfully!");
+        setSuccessMessage(`Your Registration No is ${response.regdNo}`)
+        setShowModal(true);
         handleReset();
       } else {
         toast.error("Registration Failed");
@@ -38,7 +46,8 @@ const AddStudentForm = () => {
   const handleReset = () => setForm({});
 
   return (
-    <div className="p-4 mx-auto">
+    <>
+      <div className="p-4 mx-auto">
         <ToastContainer autoClose={2000} />
       <p className="text-sm text-gray-500 mb-4 cursor-pointer">
         <Link to="/">Home </Link>-{" "}
@@ -404,6 +413,14 @@ const AddStudentForm = () => {
         </div>
       </form>
     </div>
+
+      <ConfirmModal
+        isOpen={showModal}
+        title="Registration Successfull !"
+        message={successMessage}
+        onConfirm={handleConfirm}
+      />
+    </>
   );
 };
 

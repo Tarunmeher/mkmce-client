@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Edit, Eye, Pen, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import EditStudentModal from './EditStudentModal';
 import ViewStudentModal from './ViewStudentModal';
+import apiRequest from "../../../services/apiService";
 
 const ManageStudent = () => {
   const inputClass = "border px-2 py-1 rounded w-full focus:outline-none";
@@ -10,21 +11,7 @@ const ManageStudent = () => {
   const [searchId, setSearchId] = useState('');
   const [searchName, setSearchName] = useState('');
   const [searchClass, setSearchClass] = useState('');
-  const [students, setStudents] = useState([
-    {
-      id: '2901',
-      name: 'Richi Rozario',
-      gender: 'Female',
-      parentsName: 'xyg',
-      class: '1',
-      section: 'A',
-      address: 'TA-110, North Sydney',
-      dob: '2010-03-10',
-      mobile: '+8812 00 5098',
-      email: 'ndisons@gmail.com',
-      photo: 'https://i.pravatar.cc/40?img=12',
-    },
-  ]);
+  const [students, setStudents] = useState([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
@@ -79,11 +66,30 @@ const ManageStudent = () => {
 // filtered students based on search criteria
   const filteredStudents = students.filter((s) => {
     return (
-      s.id.includes(searchId) &&
-      s.name.toLowerCase().includes(searchName.toLowerCase()) &&
-      s.class.includes(searchClass)
+      s.roll_no.includes(searchId) &&
+      s.first_name.toLowerCase().includes(searchName.toLowerCase()) &&
+      s.standard.includes(searchClass)
     );
   });
+
+  const fetchEnquiries = async () =>{
+    try {
+      const response = await apiRequest('GET', '/student/getStudents');
+      if(response && response.success){
+        setStudents(response.data);
+      }else{
+        toast.error("No Student Found");
+      }
+    } catch (error) {
+      console.log(error);
+      // toast.error("Something Went Wrong");
+    }
+  }
+
+
+  useEffect(()=>{
+      fetchEnquiries();
+  },[])
 
   return (
     <div className="p-4 mx-auto">
@@ -123,17 +129,19 @@ const ManageStudent = () => {
           <table className="min-w-full text-sm text-left border">
             <thead className="bg-gray-100">
               <tr>
-                <th className="p-2 border">ID</th>
+                <th className="p-2 border">Student ID</th>
                 <th className="p-2 border">Photo</th>
-                <th className="p-2 border">Name</th>
-                <th className="p-2 border">Gender</th>
-                <th className="p-2 border">Parents Name</th>
+                <th className="p-2 border">Student Name</th>
+                <th className="p-2 border">Father's Name</th>
+                <th className="p-2 border">Roll No</th>
                 <th className="p-2 border">Class</th>
                 <th className="p-2 border">Section</th>
+                <th className="p-2 border">Gender</th>
+                <th className="p-2 border">Caste</th>
+                <th className="p-2 border">DOB</th>
+                <th className="p-2 border">Mobile</th>
+                <th className="p-2 border">Email</th>
                 <th className="p-2 border">Address</th>
-                <th className="p-2 border">Date Of Birth</th>
-                <th className="p-2 border">Mobile No</th>
-                <th className="p-2 border">E-mail</th>
                 <th className="p-2 border">Action</th>
               </tr>
             </thead>
@@ -148,15 +156,17 @@ const ManageStudent = () => {
                       className="w-8 h-8 rounded-full cursor-pointer"
                     />
                   </td>
-                  <td className="p-2 border">{e.name}</td>
-                  <td className="p-2 border">{e.gender}</td>
-                  <td className="p-2 border">{e.parentsName}</td>
-                  <td className="p-2 border">{e.class}</td>
+                  <td className="p-2 border">{e.first_name+' '+e.last_name}</td>
+                  <td className="p-2 border">{e.fathers_name}</td>
+                  <td className="p-2 border">{e.roll_no}</td>
+                  <td className="p-2 border">{e.standard}</td>
                   <td className="p-2 border">{e.section}</td>
-                  <td className="p-2 border">{e.address}</td>
-                  <td className="p-2 border">{e.dob}</td>
-                  <td className="p-2 border">{e.mobile}</td>
+                  <td className="p-2 border">{e.gender}</td>
+                  <td className="p-2 border">{e.caste}</td>
+                  <td className="p-2 border">{new Date(e.dob.split("T")[0]).toDateString()}</td>
+                  <td className="p-2 border">{e.contact_number}</td>
                   <td className="p-2 border">{e.email}</td>
+                  <td className="p-2 border">{e.current_address}</td>
                   <td className="p-2 border flex gap-2 items-center">
                     <Eye onClick={() => openViewModal(e)} className="w-4 h-4 text-gray-700 cursor-pointer" />
                     <Pen onClick={() => openEditModal(e)} className="w-4 h-4 text-green-600 cursor-pointer" />
