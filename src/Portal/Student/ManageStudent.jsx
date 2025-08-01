@@ -5,6 +5,9 @@ import EditStudentModal from './EditStudentModal';
 import ViewStudentModal from './ViewStudentModal';
 import apiRequest from "../../../services/apiService";
 
+import male_student from "../../assets/male-student.png"
+import female_student from "../../assets/female-student.png"
+
 const ManageStudent = () => {
   const inputClass = "border px-2 py-1 rounded w-full focus:outline-none";
 
@@ -129,11 +132,11 @@ const ManageStudent = () => {
           <table className="min-w-full text-sm text-left border">
             <thead className="bg-gray-100">
               <tr>
-                <th className="p-2 border">Student ID</th>
+                <th className="p-2 border">Registration ID</th>
                 <th className="p-2 border">Photo</th>
                 <th className="p-2 border">Student Name</th>
                 <th className="p-2 border">Father's Name</th>
-                <th className="p-2 border">Roll No</th>
+                <th className="p-2 border">Student ID</th>
                 <th className="p-2 border">Class</th>
                 <th className="p-2 border">Section</th>
                 <th className="p-2 border">Gender</th>
@@ -148,10 +151,10 @@ const ManageStudent = () => {
             <tbody>
               {filteredStudents.map((e) => (
                 <tr key={e.id} className="hover:bg-gray-50">
-                  <td className="p-2 border">{e.id}</td>
+                  <td className="p-2 border">{e.sid}</td>
                   <td className="p-2 border">
                     <img
-                      src={e.photo}
+                      src={e.passport_photo?e.passport_photo:(e.gender.toLowerCase()=='male'?male_student:female_student)}
                       alt={e.name}
                       className="w-8 h-8 rounded-full cursor-pointer"
                     />

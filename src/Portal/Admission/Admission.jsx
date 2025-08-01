@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { portalinfo } from '../../portalInfo.js'
+import { portalinfo } from '../../portalInfo.js';
+import apiRequest from "../../../services/apiService";
 
 
 const Admission = () => {
     const classList = "w-full border p-2 rounded focus:outline-none";
 
     const [form, setForm] = useState({
-        studentId: '',
-        academicYear: '',
+        student_id: '',
+        academic_year: '',
         standard: '',
         section: '',
-        rollNo: '',
-        admissionType: '',
+        roll_no: '',
+        admission_type: '',
+        fee_structure_id:'',
         remarks: ''
     });
 
@@ -25,29 +27,37 @@ const Admission = () => {
         setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const fields = Object.values(form);
-        if (fields.some(f => !f)) {
-            toast.error('Please fill in all required fields!');
-            return;
+        try {
+          const response = await apiRequest(
+            "POST",
+            "/student/addAcademicDetails",
+            form
+          );
+          if (response && response.success) {
+            toast.success("Academic Record Added Successfully");
+            handleReset();
+          } else {
+            toast.error("Academic Record Added Failed");
+          }
+        } catch (error) {
+          toast.error("Something Went Wrong");
+          console.log(error);
         }
-        setRecords([...records, form]);
-        toast.success('Student information submitted successfully!');
-        handleReset();
     };
 
     const handleReset = () => {
         setForm({
-            studentId: '',
-            academicYear: '',
+            student_id: '',
+            academic_year: '',
             standard: '',
             section: '',
-            rollNo: '',
-            admissionType: '',
+            roll_no: '',
+            admission_type: '',
+            fee_structure_id:'',
             remarks: ''
         });
-        toast.info('Form cleared');
     };
 
     return (
@@ -59,9 +69,9 @@ const Admission = () => {
                 <h2 className="text-xl font-bold mb-4">Student Admission Form</h2>
                 <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded space-y-4">
                     <input
-                        name="studentId"
+                        name="student_id"
                         autoComplete="off"
-                        value={form.studentId}
+                        value={form.student_id}
                         onChange={handleChange}
                         placeholder="Student ID"
                         className={classList}
@@ -69,9 +79,9 @@ const Admission = () => {
                     />
 
                     <input
-                        name="academicYear"
+                        name="academic_year"
                         autoComplete="off"
-                        value={form.academicYear}
+                        value={form.academic_year}
                         onChange={handleChange}
                         placeholder="Academic Year"
                         className={classList}
@@ -105,9 +115,9 @@ const Admission = () => {
                     </select>
 
                     <input
-                        name="rollNo"
+                        name="roll_no"
                         autoComplete="off"
-                        value={form.rollNo}
+                        value={form.roll_no}
                         onChange={handleChange}
                         placeholder="Roll Number"
                         className={classList}
@@ -115,16 +125,30 @@ const Admission = () => {
                     />
 
                     <select
-                        name="admissionType"
-                        value={form.admissionType}
+                        name="admission_type"
+                        value={form.admission_type}
                         onChange={handleChange}
                         className={classList}
                         required
                     >
                         <option value="">Select Admission Type</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Transfer">Transfer</option>
-                        <option value="Other">Other</option>
+                        <option value="new">New</option>
+                        <option value="promoted">Promoted</option>
+                        <option value="transferred">Transferred</option>
+                    </select>
+
+                    <select
+                        name="fee_structure_id"
+                        value={form.fee_structure_id}
+                        onChange={handleChange}
+                        className={classList}
+                        required
+                    >
+                        <option value="">Select Fee Structure</option>
+                        <option value="0">Class 1</option>
+                        <option value="2">Class 2</option>
+                        <option value="1">Class 3</option>
+                        <option value="3">Class 4</option>
                     </select>
 
                     <textarea

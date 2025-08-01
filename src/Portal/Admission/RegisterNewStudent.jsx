@@ -11,7 +11,10 @@ const AddStudentForm = () => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleConfirm = () => {
-    setShowModal(false);
+    let cnf = confirm("Did you note the Registartion & Student ID");
+    if(cnf){
+      setShowModal(false);
+    }    
   };
 
   const handleChange = (e) => {
@@ -31,7 +34,7 @@ const AddStudentForm = () => {
         form
       );
       if (response && response.success) {
-        setSuccessMessage(`Your Registration No is ${response.regdNo}`)
+        setSuccessMessage(`Your Registration No is ${response.regdId} & Student ID is ${response.studentId}, Please Note It to Update Academic Detail.`)
         setShowModal(true);
         handleReset();
       } else {
