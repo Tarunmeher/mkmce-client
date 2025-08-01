@@ -107,7 +107,7 @@ const ManageStudent = () => {
 
       <div className="p-4 bg-white rounded shadow-md">
         <h2 className="text-lg font-semibold mb-4">Manage Student List</h2>
-
+        <div style={{paddingBottom:"5px"}}>Filter Student</div>
         <div className="flex gap-2 mb-4">
           <input
             type="text"
