@@ -89,6 +89,10 @@ const ManageStudent = () => {
     }
   }
 
+  const uploadDocument = async (sid) =>{
+    console.log(sid);
+  }
+
 
   useEffect(()=>{
       fetchEnquiries();
@@ -145,6 +149,7 @@ const ManageStudent = () => {
                 <th className="p-2 border">Mobile</th>
                 <th className="p-2 border">Email</th>
                 <th className="p-2 border">Address</th>
+                <th className="p-2 border">Document Status</th>
                 <th className="p-2 border">Action</th>
               </tr>
             </thead>
@@ -170,6 +175,7 @@ const ManageStudent = () => {
                   <td className="p-2 border">{e.contact_number}</td>
                   <td className="p-2 border">{e.email}</td>
                   <td className="p-2 border">{e.current_address}</td>
+                  <td className="p-2 border">{e.document_status?<span className='text-green-50'>Completed</span>:<span onClick={uploadDocument(e.sid)} className='text-yellow-600 cursor-pointer'>Pending</span>}</td>
                   <td className="p-2 border flex gap-2 items-center">
                     <Eye onClick={() => openViewModal(e)} className="w-4 h-4 text-gray-700 cursor-pointer" />
                     <Pen onClick={() => openEditModal(e)} className="w-4 h-4 text-green-600 cursor-pointer" />
