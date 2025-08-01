@@ -44,18 +44,7 @@ const SyllabusManagement = () => {
             <option>10</option>
           </select>
 
-          <select className="border border-gray-300 px-3 py-2 rounded-md w-full">
-            <option>Select Subject</option>
-            <option>English</option>
-            <option>Hindi</option>
-            <option>Math</option>
-            <option>Science</option>
-            <option>EVS</option>
-            <option>Social Studies</option>
-            <option>Computer</option>
-            <option>General Knowledge</option>
-          </select>
-
+          <input type="text" placeholder="Enter Subject" className="border border-gray-300 px-3 py-2 rounded-md w-full" />
           <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full">
             Submit
           </button>

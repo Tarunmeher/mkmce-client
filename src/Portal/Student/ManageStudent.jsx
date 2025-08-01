@@ -5,8 +5,8 @@ import EditStudentModal from './EditStudentModal';
 import ViewStudentModal from './ViewStudentModal';
 import apiRequest from "../../../services/apiService";
 
-import male_student from "../../assets/male-student.png"
-import female_student from "../../assets/female-student.png"
+import male_student from "../../assets/male-student.png";
+import female_student from "../../assets/female-student.png";
 
 const ManageStudent = () => {
   const inputClass = "border px-2 py-1 rounded w-full focus:outline-none";
@@ -14,6 +14,8 @@ const ManageStudent = () => {
   const [searchId, setSearchId] = useState('');
   const [searchName, setSearchName] = useState('');
   const [searchClass, setSearchClass] = useState('');
+  const [searchSection, setSearchSection] = useState('');
+  const [searchMobile, setSearchMobile] = useState('');
   const [students, setStudents] = useState([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,19 +24,18 @@ const ManageStudent = () => {
   const [viewData, setViewData] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
 
+  const [showFilter, setShowFilter] = useState(false);
 
-  //Function to open the modal with data
   const openEditModal = (student) => {
     setIsModalOpen(true);
     setEditData(student);
-  }
-  //Function to handle input change inside modal:
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditData({ ...editData, [name]: value });
-  }
+  };
 
-  //Function to update the student in the list:
   const handleUpdate = () => {
     for (const key in editData) {
       if (!editData[key]) {
@@ -42,15 +43,12 @@ const ManageStudent = () => {
         return;
       }
     }
-
     setStudents((prev) =>
       prev.map((s) => (s.id === editData.id ? editData : s))
     );
     setIsModalOpen(false);
   };
 
-
-  // handle delete student
   const handleDelete = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this student?");
     if (confirmDelete) {
@@ -58,78 +56,101 @@ const ManageStudent = () => {
     }
   };
 
-
-  // View student details
   const openViewModal = (student) => {
     setViewData(student);
     setIsViewModalOpen(true);
   };
 
-
-// filtered students based on search criteria
   const filteredStudents = students.filter((s) => {
     return (
       s.roll_no.includes(searchId) &&
       s.first_name.toLowerCase().includes(searchName.toLowerCase()) &&
-      s.standard.includes(searchClass)
+      s.standard.includes(searchClass) &&
+      s.section.includes(searchSection) &&
+      s.contact_number.includes(searchMobile)
     );
   });
 
-  const fetchEnquiries = async () =>{
+  const fetchEnquiries = async () => {
     try {
       const response = await apiRequest('GET', '/student/getStudents');
-      if(response && response.success){
+      if (response && response.success) {
         setStudents(response.data);
-      }else{
-        toast.error("No Student Found");
       }
     } catch (error) {
       console.log(error);
-      // toast.error("Something Went Wrong");
     }
-  }
+  };
 
-  const uploadDocument = async (sid) =>{
+  const uploadDocument = async (sid) => {
     console.log(sid);
-  }
+  };
 
-
-  useEffect(()=>{
-      fetchEnquiries();
-  },[])
+  useEffect(() => {
+    fetchEnquiries();
+  }, []);
 
   return (
     <div className="p-4 mx-auto">
       <p className="text-sm text-gray-500 mb-4 cursor-pointer">
-        <Link to="/">Home </Link>-{" "}
-        <span className="text-blue-600">Student List</span>
+        <Link to="/">Home </Link>- <span className="text-blue-600">Student List</span>
       </p>
 
       <div className="p-4 bg-white rounded shadow-md">
         <h2 className="text-lg font-semibold mb-4">Manage Student List</h2>
-        <div style={{paddingBottom:"5px"}}>Filter Student</div>
-        <div className="flex gap-2 mb-4">
-          <input
-            type="text"
-            placeholder="Search By Id..."
-            className={inputClass}
-            value={searchId}
-            onChange={(e) => setSearchId(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Search by Name..."
-            className={inputClass}
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Search by Class..."
-            className={inputClass}
-            value={searchClass}
-            onChange={(e) => setSearchClass(e.target.value)}
-          />
+
+        <div className="mb-4 w-fit bg-gray-50 p-4 rounded-md shadow-sm">
+          <p
+            className="font-semibold text-gray-700 mb-2 border-b pb-1 cursor-pointer flex justify-between items-center"
+            onClick={() => setShowFilter(!showFilter)}
+          >
+            Filter Student 
+            <span className="text-blue-600 text-sm ml-2">{showFilter ? '▲' : '▼'}</span>
+          </p>
+
+          {showFilter && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              <input
+                type="text"
+                placeholder="Student ID"
+                className={inputClass}
+                value={searchId}
+                onChange={(e) => setSearchId(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Name"
+                className={inputClass}
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Class Name"
+                className={inputClass}
+                value={searchClass}
+                onChange={(e) => setSearchClass(e.target.value)}
+              />
+              <select
+                className={inputClass}
+                value={searchSection}
+                onChange={(e) => setSearchSection(e.target.value)}
+              >
+                <option value="">Select Section</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+              <input
+                type="text"
+                placeholder="Mobile No"
+                className={inputClass}
+                value={searchMobile}
+                onChange={(e) => setSearchMobile(e.target.value)}
+              />
+            </div>
+          )}
         </div>
 
         <div className="overflow-auto">
@@ -159,12 +180,12 @@ const ManageStudent = () => {
                   <td className="p-2 border">{e.sid}</td>
                   <td className="p-2 border">
                     <img
-                      src={e.passport_photo?e.passport_photo:(e.gender.toLowerCase()=='male'?male_student:female_student)}
+                      src={e.passport_photo ? e.passport_photo : (e.gender.toLowerCase() === 'male' ? male_student : female_student)}
                       alt={e.name}
                       className="w-8 h-8 rounded-full cursor-pointer"
                     />
                   </td>
-                  <td className="p-2 border">{e.first_name+' '+e.last_name}</td>
+                  <td className="p-2 border">{e.first_name + ' ' + e.last_name}</td>
                   <td className="p-2 border">{e.fathers_name}</td>
                   <td className="p-2 border">{e.roll_no}</td>
                   <td className="p-2 border">{e.standard}</td>
@@ -175,7 +196,7 @@ const ManageStudent = () => {
                   <td className="p-2 border">{e.contact_number}</td>
                   <td className="p-2 border">{e.email}</td>
                   <td className="p-2 border">{e.current_address}</td>
-                  <td className="p-2 border">{e.document_status?<span className='text-green-50'>Completed</span>:<span onClick={uploadDocument(e.sid)} className='text-yellow-600 cursor-pointer'>Pending</span>}</td>
+                  <td className="p-2 border">{e.document_status ? <span className='text-green-500'>Completed</span> : <span onClick={() => uploadDocument(e.sid)} className='text-yellow-600 cursor-pointer'>Pending</span>}</td>
                   <td className="p-2 border flex gap-2 items-center">
                     <Eye onClick={() => openViewModal(e)} className="w-4 h-4 text-gray-700 cursor-pointer" />
                     <Pen onClick={() => openEditModal(e)} className="w-4 h-4 text-green-600 cursor-pointer" />
@@ -187,11 +208,14 @@ const ManageStudent = () => {
           </table>
         </div>
       </div>
-      <EditStudentModal isOpen={isModalOpen}
-        onClose={(e) => setIsModalOpen(false)}
+
+      <EditStudentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         studentData={editData}
         onChange={handleInputChange}
-        onSubmit={handleUpdate} />
+        onSubmit={handleUpdate}
+      />
 
       <ViewStudentModal
         isOpen={isViewModalOpen}

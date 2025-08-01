@@ -23,26 +23,11 @@ const ClassManagement = () => {
       </p>
 
       <div className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-xl font-semibold mb-4">Manage Class List</h2>
+        <h2 className="text-xl font-semibold mb-4">Create Class</h2>
 
         {/* Add Form */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <select className="border border-gray-300 px-3 py-2 rounded-md w-full">
-            <option>Select Class</option>
-            <option>Nursery</option>
-            <option>LKG</option>
-            <option>UKG</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </select>
+          <input type="text" placeholder="Select Class" className="border border-gray-300 px-3 py-2 rounded-md w-full" />
           <select className="border border-gray-300 px-3 py-2 rounded-md w-full">
             <option>Select Section</option>
             <option>A</option>
@@ -56,35 +41,39 @@ const ClassManagement = () => {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border border-gray-200">
-            <thead className="bg-gray-100">
-              <tr className="text-left">
-                <th className="border px-3 py-2">Sl. No</th>
-                <th className="border px-3 py-2">ID</th>
-                <th className="border px-3 py-2">Class Name</th>
-                <th className="border px-3 py-2">Section</th>
-                <th className="border px-3 py-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {classData.map((item, index) => (
-                <tr key={item.id} className="text-gray-800">
-                  <td className="border px-3 py-2">{index + 1}</td>
-                  <td className="border px-3 py-2">{item.id}</td>
-                  <td className="border px-3 py-2">{item.className}</td>
-                  <td className="border px-3 py-2">{item.section}</td>
-                  <td className="border px-3 py-2">
-                    <Pencil
-                      className="w-4 h-4 text-green-600 cursor-pointer"
-                      onClick={() => handleEdit(item)}
-                    />
-                  </td>
+        <div>
+          <h2 className="text-xl font-semibold mb-4">Manage Class</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-gray-200">
+              <thead className="bg-gray-100">
+                <tr className="text-left">
+                  <th className="border px-3 py-2">Sl. No</th>
+                  <th className="border px-3 py-2">ID</th>
+                  <th className="border px-3 py-2">Class Name</th>
+                  <th className="border px-3 py-2">Section</th>
+                  <th className="border px-3 py-2">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {classData.map((item, index) => (
+                  <tr key={item.id} className="text-gray-800">
+                    <td className="border px-3 py-2">{index + 1}</td>
+                    <td className="border px-3 py-2">{item.id}</td>
+                    <td className="border px-3 py-2">{item.className}</td>
+                    <td className="border px-3 py-2">{item.section}</td>
+                    <td className="border px-3 py-2">
+                      <Pencil
+                        className="w-4 h-4 text-green-600 cursor-pointer"
+                        onClick={() => handleEdit(item)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
 
       {/* Modal Call */}

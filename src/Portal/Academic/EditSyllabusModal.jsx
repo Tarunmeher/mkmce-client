@@ -34,16 +34,7 @@ const EditSyllabusModal = ({ isOpen, onClose, data }) => {
 
           <div>
             <label className="block mb-1 text-sm font-medium">Subject</label>
-            <select defaultValue={data.subject} className="w-full border border-gray-300 px-3 py-2 rounded-md">
-              <option>English</option>
-              <option>Hindi</option>
-              <option>Math</option>
-              <option>Science</option>
-              <option>EVS</option>
-              <option>Social Studies</option>
-              <option>Computer</option>
-              <option>General Knowledge</option>
-            </select>
+            <input type="text" defaultValue={data.subject} className="w-full border border-gray-300 px-3 py-2 rounded-md" />
           </div>
 
           <button type="button" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
