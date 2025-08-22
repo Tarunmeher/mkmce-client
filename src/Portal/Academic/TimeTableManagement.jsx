@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2, Printer } from "lucide-react";
 
 const TimeTableManagement = () => {
   const [day, setDay] = useState("");
@@ -69,6 +69,11 @@ const TimeTableManagement = () => {
   const filteredData =
     filterDay === "All" ? timeTable : timeTable.filter((item) => item.day === filterDay);
 
+  // Print function
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
       {/* Breadcrumb */}
@@ -78,7 +83,9 @@ const TimeTableManagement = () => {
 
       {/* Card */}
       <div className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-xl font-semibold mb-4">Manage Time Table</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">Manage Time Table</h2>
+        </div>
 
         {/* Add Time Table Form */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
@@ -124,21 +131,32 @@ const TimeTableManagement = () => {
         </div>
 
         {/* Filter */}
-        <div className="flex items-center gap-2 mb-4">
-          <label className="text-sm font-medium">Filter by Day:</label>
-          <select
-            className="border px-2 py-1 rounded"
-            value={filterDay}
-            onChange={(e) => setFilterDay(e.target.value)}
+        <div className="flex items-center gap-2 mb-4 justify-between">
+          <div>
+
+            <label className="text-sm font-medium">Filter by Day:</label>
+            <select
+              className="border px-2 py-1 rounded"
+              value={filterDay}
+              onChange={(e) => setFilterDay(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+            </select>
+          </div>
+          {/* Print Button */}
+          <button
+            onClick={handlePrint}
+            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
           >
-            <option value="All">All</option>
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
-          </select>
+            <Printer className="w-4 h-4" />
+            Print
+          </button>
         </div>
 
         {/* Table */}
