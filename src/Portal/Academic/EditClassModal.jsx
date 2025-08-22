@@ -15,7 +15,7 @@ const EditClassModal = ({ isOpen, onClose, data }) => {
         <form className="space-y-4">
           <div>
             <label className="block mb-1 text-sm font-medium">Class Name</label> 
-            <input type="text" defaultValue={data.className} className="w-full border border-gray-300 px-3 py-2 rounded-md" />
+            <input type="text" defaultValue={data.name} className="w-full border border-gray-300 px-3 py-2 rounded-md" />
           </div>
 
           <div>
