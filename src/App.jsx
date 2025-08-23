@@ -11,10 +11,12 @@ import ManageStudent from './Portal/Student/ManageStudent';
 import ClassManagement from './Portal/Academic/ClassManagement';
 import SyllabusManagement from './Portal/Academic/SyllabusManagement';
 import TimeTableManagement from './Portal/Academic/TimeTableManagement';
+import Login from './Portal/Login/Login';
 
 const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="/admission/enquiry" element={<Enquiry />} />
