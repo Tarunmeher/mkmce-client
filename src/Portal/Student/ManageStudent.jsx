@@ -85,7 +85,7 @@ const ManageStudent = () => {
   const uploadDocument = async (sid) => {
     console.log(sid);
   };
-
+x
   useEffect(() => {
     fetchEnquiries();
   }, []);
