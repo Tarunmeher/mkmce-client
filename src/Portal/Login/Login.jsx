@@ -34,32 +34,24 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4"
       style={{
         backgroundImage: `url(${loginLogo})`,
       }}
     >
+      {/* Heading Outside Box */}
+      {/* Title outside box */}
+      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center relative">
+        <span className="bg-yellow-400 px-6 py-2 rounded-xl shadow-md">
+          MKMCE PORTAL LOGIN
+        </span>
+      </h2>
+
+      {/* Login Box */}
       <div
-        className="bg-white/10 backdrop-blur-3xl p-8 rounded-2xl shadow-2xl w-[90%] sm:w-[400px] text-center"
+        className="bg-white/10 backdrop-blur-3xl p-8 rounded-2xl shadow-2xl w-full max-w-sm text-center"
         data-aos="zoom-in"
       >
-        {/* Arc Heading */}
-        <svg viewBox="0 0 500 150" className="w-full ">
-          <path
-            id="curve"
-            d="M 50 100 Q 250 10 450 100"
-            fill="transparent"
-          />
-          <text
-            width="500"
-            className="fill-yellow-400 text-4xl font-extrabold tracking-widest"
-          >
-            <textPath href="#curve" startOffset="50%" textAnchor="middle">
-              MKMCE PORTAL LOGIN
-            </textPath>
-          </text>
-        </svg>
-
         {/* Logo */}
         <img
           src={logo}
@@ -68,7 +60,7 @@ const Login = () => {
           data-aos="fade-down"
         />
 
-        <h2 className="text-2xl font-bold text-white mb-6">Login</h2>
+        <h3 className="text-xl font-bold text-white mb-6">Login</h3>
 
         {/* Form */}
         <form className="space-y-4" onSubmit={handleLogin}>
