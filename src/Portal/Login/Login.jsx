@@ -41,11 +41,9 @@ const Login = () => {
     >
       {/* Heading Outside Box */}
       {/* Title outside box */}
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center relative">
-        <span className="bg-yellow-400 px-6 py-2 rounded-xl shadow-md">
-          MKMCE PORTAL LOGIN
-        </span>
-      </h2>
+      <h1 className="text-4xl font-bold text-[#fff] mb-8 text-center relative">
+        MKMCE PORTAL LOGIN
+      </h1>
 
       {/* Login Box */}
       <div
