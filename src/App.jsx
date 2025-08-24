@@ -12,6 +12,10 @@ import ClassManagement from './Portal/Academic/ClassManagement';
 import SyllabusManagement from './Portal/Academic/SyllabusManagement';
 import TimeTableManagement from './Portal/Academic/TimeTableManagement';
 import Login from './Portal/Login/Login';
+import FeeStructure from './Portal/Finance/FeeStructure';
+import AdmissionDue from './Portal/Finance/AdmissionDue';
+import TransportDue from './Portal/Finance/TransportDue';
+import SalleryPayment from './Portal/Finance/SalleryPayment';
 
 const App = () => {
   return (
@@ -28,6 +32,10 @@ const App = () => {
         <Route path="/Academic/classmanagement" element={<ClassManagement />} />
         <Route path="/Academic/syllabusmanagement" element={<SyllabusManagement />} />
         <Route path="/Academic/timetablemanagement" element={<TimeTableManagement />} />
+        <Route path='/Finance/feestructure' element={<FeeStructure />} />
+        <Route path='/Finance/admisiondue' element={<AdmissionDue />} />
+        <Route path='/Finance/transportdue' element={<TransportDue />} />
+        <Route path='/Finance/sallerypayment' element={<SalleryPayment />} />
       </Route>
     </Routes>
   );

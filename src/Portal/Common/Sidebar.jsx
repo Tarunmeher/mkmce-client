@@ -4,7 +4,10 @@ import { portalinfo } from '../../portalInfo.js';
 
 import {
   Users, FileQuestion,
-  Home, ChevronRight, ChevronDown, Menu, UserPlus, Briefcase, PlusCircle, Settings
+  Home, ChevronRight, ChevronDown, Menu, UserPlus, Briefcase, PlusCircle, Settings,  Wallet,
+  FileWarning, 
+  Bus,          
+  CreditCard  
 } from 'lucide-react';
 
 const menuItems = [
@@ -41,6 +44,17 @@ const menuItems = [
       { to: '/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Time Table Management' },
     ],
   },
+  {
+    label: 'Finance',
+    icon: <Users className="w-5 h-5 text-yellow-400" />,
+    subItems: [
+      { to: '/Finance/feestructure', icon: <Wallet className="w-4 h-4 text-yellow-400" />, label: 'Fee Structure' },
+      { to: '/Finance/admisiondue', icon: <FileWarning className="w-4 h-4 text-yellow-400" />, label: 'Admission Due' },
+      { to: '/Finance/transportdue', icon: <Bus className="w-4 h-4 text-yellow-400" />, label: 'Transport Due' },
+      { to: '/Finance/sallerypayment', icon: <CreditCard className="w-4 h-4 text-yellow-400" />, label: 'Sallery Payment' },
+    ],
+  }
+
 ];
 
 const Sidebar = () => {
