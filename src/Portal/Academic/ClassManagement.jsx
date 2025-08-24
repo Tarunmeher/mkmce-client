@@ -63,7 +63,7 @@ const ClassManagement = () => {
         toast.error("No Class Available");
       }
     } catch (error) {
-      toast.error(error.message || "Something Went Wrong !");
+      toast.error(error.error || "Something Went Wrong !");
       console.log(error);
     }
   }
