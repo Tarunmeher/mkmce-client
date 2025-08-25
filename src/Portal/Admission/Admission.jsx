@@ -8,6 +8,7 @@ import apiRequest from "../../../services/apiService";
 const Admission = () => {
   const classList = "w-full border p-2 rounded focus:outline-none";
   const [classData, setClassData] = useState(null);
+  const [sectionData, setSectionData] = useState(null);
 
   const [form, setForm] = useState({
     student_id: "",
@@ -25,6 +26,9 @@ const Admission = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    if(name=='standard' && value!=''){
+      fetchSectionList(value);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -70,6 +74,20 @@ const Admission = () => {
       }
     } catch (error) {
       setClassData(null);
+      // toast.error(error.error || "Something Went Wrong !");
+      console.log(error);
+    }
+  };
+
+  const fetchSectionList = async (id) => {
+    try {
+      const response = await apiRequest("GET", `/class/getSectionlistByClassID/${id}`);
+      if (response && response.success) {
+        setSectionData(response.data);
+      } else {
+        // toast.error("No Section Available");
+      }
+    } catch (error) {
       // toast.error(error.error || "Something Went Wrong !");
       console.log(error);
     }
@@ -135,11 +153,10 @@ const Admission = () => {
             required
           >
             <option value="">Select Section</option>
-            {["A", "B", "C", "D"].map((sec) => (
-              <option key={sec} value={sec}>
-                {sec}
-              </option>
-            ))}
+            {sectionData &&
+              sectionData.map((item, index) => (
+                <option value={item.id}>{item.section_name}</option>
+              ))}
           </select>
 
           <input

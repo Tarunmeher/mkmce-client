@@ -9,6 +9,7 @@ import Admission from './Portal/Admission/Admission';
 import ManageEmployee from './Portal/Employee/ManageEmployee';
 import ManageStudent from './Portal/Student/ManageStudent';
 import ClassManagement from './Portal/Academic/ClassManagement';
+import SectionManagement from './Portal/Academic/SectionManagement';
 import SyllabusManagement from './Portal/Academic/SyllabusManagement';
 import TimeTableManagement from './Portal/Academic/TimeTableManagement';
 import Login from './Portal/Login/Login';
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/employee/manage' element={<ManageEmployee />} />
         <Route path="/student/manage" element={<ManageStudent />} />
         <Route path="/Academic/classmanagement" element={<ClassManagement />} />
+        <Route path="/Academic/sectionmanagement" element={<SectionManagement />} />
         <Route path="/Academic/syllabusmanagement" element={<SyllabusManagement />} />
         <Route path="/Academic/timetablemanagement" element={<TimeTableManagement />} />
         <Route path='/Finance/feestructure' element={<FeeStructure />} />

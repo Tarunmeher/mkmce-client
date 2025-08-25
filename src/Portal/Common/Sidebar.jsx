@@ -39,9 +39,10 @@ const menuItems = [
     label: 'Academic',
     icon: <Users className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/Academic/classmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Class Management' },
-      { to: '/Academic/syllabusmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Syllabus Management' },
-      { to: '/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Time Table Management' },
+      { to: '/Academic/classmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Class' },
+      { to: '/Academic/sectionmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Section' },
+      { to: '/Academic/syllabusmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Syllabus' },
+      { to: '/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Time Table' },
     ],
   },
   {
