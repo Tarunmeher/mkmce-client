@@ -15,44 +15,44 @@ const menuItems = [
     label: 'Admission',
     icon: <UserPlus className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/admission/enquiry', icon: <FileQuestion className="w-4 h-4 text-yellow-400" />, label: 'Enquiry' },
-      { to: '/admission/register', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Register New Student' },
-      { to: '/admission/admission-form', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Admission' },
+      { to: '/adminPortal/admission/enquiry', icon: <FileQuestion className="w-4 h-4 text-yellow-400" />, label: 'Enquiry' },
+      { to: '/adminPortal/admission/register', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Register New Student' },
+      { to: '/adminPortal/admission/admission-form', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Admission' },
     ],
   },
   {
     label: 'Employee',
     icon: <Briefcase className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/employee/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Employee' },
-      { to: '/employee/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Employee' },
+      { to: '/adminPortal/employee/add', icon: <PlusCircle className="w-4 h-4 text-yellow-400" />, label: 'Add Employee' },
+      { to: '/adminPortal/employee/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Employee' },
     ],
   },
   {
     label: 'Students',
     icon: <Users className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/student/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Student' },
+      { to: '/adminPortal/student/manage', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Student' },
     ],
   },
   {
     label: 'Academic',
     icon: <Users className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/Academic/classmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Class' },
-      { to: '/Academic/sectionmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Section' },
-      { to: '/Academic/syllabusmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Syllabus' },
-      { to: '/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Time Table' },
+      { to: '/adminPortal/Academic/classmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Class' },
+      { to: '/adminPortal/Academic/sectionmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Section' },
+      { to: '/adminPortal/Academic/syllabusmanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Syllabus' },
+      { to: '/adminPortal/Academic/timetablemanagement', icon: <Settings className="w-4 h-4 text-yellow-400" />, label: 'Manage Time Table' },
     ],
   },
   {
     label: 'Finance',
     icon: <Users className="w-5 h-5 text-yellow-400" />,
     subItems: [
-      { to: '/Finance/feestructure', icon: <Wallet className="w-4 h-4 text-yellow-400" />, label: 'Fee Structure' },
-      { to: '/Finance/admisiondue', icon: <FileWarning className="w-4 h-4 text-yellow-400" />, label: 'Admission Due' },
-      { to: '/Finance/transportdue', icon: <Bus className="w-4 h-4 text-yellow-400" />, label: 'Transport Due' },
-      { to: '/Finance/sallerypayment', icon: <CreditCard className="w-4 h-4 text-yellow-400" />, label: 'Sallery Payment' },
+      { to: '/adminPortal/Finance/feestructure', icon: <Wallet className="w-4 h-4 text-yellow-400" />, label: 'Fee Structure' },
+      { to: '/adminPortal/Finance/admisiondue', icon: <FileWarning className="w-4 h-4 text-yellow-400" />, label: 'Admission Due' },
+      { to: '/adminPortal/Finance/transportdue', icon: <Bus className="w-4 h-4 text-yellow-400" />, label: 'Transport Due' },
+      { to: '/adminPortal/Finance/sallerypayment', icon: <CreditCard className="w-4 h-4 text-yellow-400" />, label: 'Sallery Payment' },
     ],
   }
 
@@ -88,10 +88,10 @@ const Sidebar = () => {
       </div>
 
       {/* Dashboard */}
-      <Link to='/'>
+      <Link to='/adminPortal/dashboard'>
         <div className={`flex items-center justify-between p-3 cursor-pointer ${location.pathname === '/' ? 'bg-yellow-400 text-black' : 'hover:bg-blue-800'}`}>
           <div className="flex items-center gap-3">
-            <Home className={`w-5 h-5 ${location.pathname === '/' ? 'text-black' : 'text-yellow-400'}`} />
+            <Home className={`w-5 h-5 ${location.pathname === '/adminPortal/dashboard' ? 'text-black' : 'text-yellow-400'}`} />
             {isOpen && <span className="font-medium text-l">Dashboard</span>}
           </div>
         </div>

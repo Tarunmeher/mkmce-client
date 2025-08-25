@@ -22,22 +22,22 @@ const App = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="/admission/enquiry" element={<Enquiry />} />
-        <Route path='/admission/register' element={<RegisterNewStudent />} />
-        <Route path='/admission/admission-form' element={<Admission />} />
-        <Route path='/employee/add' element={<AddEmployee />} />
-        <Route path='/employee/manage' element={<ManageEmployee />} />
-        <Route path="/student/manage" element={<ManageStudent />} />
-        <Route path="/Academic/classmanagement" element={<ClassManagement />} />
-        <Route path="/Academic/sectionmanagement" element={<SectionManagement />} />
-        <Route path="/Academic/syllabusmanagement" element={<SyllabusManagement />} />
-        <Route path="/Academic/timetablemanagement" element={<TimeTableManagement />} />
-        <Route path='/Finance/feestructure' element={<FeeStructure />} />
-        <Route path='/Finance/admisiondue' element={<AdmissionDue />} />
-        <Route path='/Finance/transportdue' element={<TransportDue />} />
-        <Route path='/Finance/sallerypayment' element={<SalleryPayment />} />
+      <Route path="/adminPortal" element={<Layout />}>
+        <Route path="/adminPortal/dashboard" element={<Dashboard />} />
+        <Route path="/adminPortal/admission/enquiry" element={<Enquiry />} />
+        <Route path='/adminPortal/admission/register' element={<RegisterNewStudent />} />
+        <Route path='/adminPortal/admission/admission-form' element={<Admission />} />
+        <Route path='/adminPortal/employee/add' element={<AddEmployee />} />
+        <Route path='/adminPortal/employee/manage' element={<ManageEmployee />} />
+        <Route path="/adminPortal/student/manage" element={<ManageStudent />} />
+        <Route path="/adminPortal/Academic/classmanagement" element={<ClassManagement />} />
+        <Route path="/adminPortal/Academic/sectionmanagement" element={<SectionManagement />} />
+        <Route path="/adminPortal/Academic/syllabusmanagement" element={<SyllabusManagement />} />
+        <Route path="/adminPortal/Academic/timetablemanagement" element={<TimeTableManagement />} />
+        <Route path='/adminPortal/Finance/feestructure' element={<FeeStructure />} />
+        <Route path='/adminPortal/Finance/admisiondue' element={<AdmissionDue />} />
+        <Route path='/adminPortal/Finance/transportdue' element={<TransportDue />} />
+        <Route path='/adminPortal/Finance/sallerypayment' element={<SalleryPayment />} />
       </Route>
     </Routes>
   );
