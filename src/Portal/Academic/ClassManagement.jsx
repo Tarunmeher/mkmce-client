@@ -11,8 +11,7 @@ const ClassManagement = () => {
   const [editData, setEditData] = useState(null);
   const [classData, setClassData] = useState(null);
   const [classForm, setClassForm] = useState({
-    name: "",
-    section: "",
+    name: ""
   });
 
 
@@ -23,8 +22,7 @@ const ClassManagement = () => {
 
   const clearForm = () => {
     setClassForm({
-      name: "",
-      section: "",
+      name: ""
     });
   };
 
@@ -99,18 +97,6 @@ const ClassManagement = () => {
             placeholder="Class Name"
             className="border border-gray-300 px-3 py-2 rounded-md w-full"
           />
-          <select
-            onChange={updateValue}
-            value={classForm.section}
-            name="section"
-            className="border border-gray-300 px-3 py-2 rounded-md w-full"
-          >
-            <option>Select Section</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-          </select>
           <button
             type="button"
             onClick={saveClass}
@@ -130,7 +116,6 @@ const ClassManagement = () => {
                   <th className="border px-3 py-2">Sl. No</th>
                   <th className="border px-3 py-2">ID</th>
                   <th className="border px-3 py-2">Class Name</th>
-                  <th className="border px-3 py-2">Section</th>
                   <th className="border px-3 py-2">Action</th>
                 </tr>
               </thead>
@@ -140,7 +125,6 @@ const ClassManagement = () => {
                     <td className="border px-3 py-2">{index + 1}</td>
                     <td className="border px-3 py-2">{item.class_id}</td>
                     <td className="border px-3 py-2">{item.name}</td>
-                    <td className="border px-3 py-2">{item.section}</td>
                     <td className="border px-3 py-2">
                       <Pencil
                         className="w-4 h-4 text-green-600 cursor-pointer"

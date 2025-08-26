@@ -1,24 +1,105 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pencil } from "lucide-react";
 import EditSyllabusModal from "./EditSyllabusModal"; // ⬅️ Import here
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+import apiRequest from "../../../services/apiService";
+import { ToastContainer, toast } from "react-toastify";
+>>>>>>> ede806ffb6e1c6d99fb52f7bf3cede219ba6f496
 
 const SyllabusManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [classData, setClassData] = useState(null);
+  const [syllabusData, setSyllabusData] = useState(null);
+  const [syllabusForm, setSyllabusForm] = useState({
+    classid: "",
+    subjectname: "",
+  });
 
-  const syllabusData = [
-    { id: 201, className: "Class 1", subject: "Math" },
-    { id: 202, className: "Class 2", subject: "English" },
-  ];
+  const clearForm = () => {
+    setSyllabusForm({
+      classid: "",
+      subjectname: "",
+    });
+  };
+
+  const saveSubject = async (e) => {
+    e.preventDefault();
+    try {
+      const fields = Object.values(syllabusForm);
+      if (fields.some((f) => !f)) {
+        toast.error("Please fill in all required fields!");
+        return;
+      }
+
+      const response = await apiRequest(
+        "POST",
+        "/class/addNewSubjectToClass",
+        syllabusForm
+      );
+      if (response && response.success) {
+        toast.success("New Subject Added to Class!");
+        fetchSyllabusDetail();
+        clearForm();
+      } else {
+        toast.success("Unable to add subject");
+      }
+    } catch (error) {
+      toast.error(error.error || "Something Went Wrong !");
+      console.log(error);
+    }
+  };
 
   const handleEdit = (item) => {
     setEditData(item);
     setIsModalOpen(true);
   };
 
+  const updateValue = (e) => {
+    const { name, value } = e.target;
+    setSyllabusForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const fetchClassList = async () => {
+    try {
+      const response = await apiRequest("GET", "/class/getClasslist");
+      if (response && response.success) {
+        setClassData(response.data);
+      } else {
+        setClassData(null);
+      }
+    } catch (error) {
+      setClassData(null);
+      // toast.error(error.error || "Something Went Wrong !");
+      console.log(error);
+    }
+  };
+
+  const fetchSyllabusDetail = async () => {
+    try {
+      const response = await apiRequest("GET", "/class/getSyllabusDetail");
+      if (response && response.success) {
+        setSyllabusData(response.data);
+      } else {
+        setSyllabusData(null);
+      }
+    } catch (error) {
+      setSyllabusData(null);
+      // toast.error(error.error || "Something Went Wrong !");
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchClassList();
+    fetchSyllabusDetail();
+  }, []);
+
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
+      <ToastContainer autoClose={2000} />
       <p className="text-sm mb-2 text-gray-700">
         <Link to='/'>Home -</Link> <span className="text-blue-500">Syllabus Management</span>
       </p>
@@ -28,25 +109,29 @@ const SyllabusManagement = () => {
 
         {/* Add form */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <select className="border border-gray-300 px-3 py-2 rounded-md w-full">
-            <option>Select Class</option>
-            <option>Nursery</option>
-            <option>LKG</option>
-            <option>UKG</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
+          <select
+            onChange={updateValue}
+            name="classid"
+            className="border border-gray-300 px-3 py-2 rounded-md w-full"
+          >
+            <option value="">--Select Class--</option>
+            {classData &&
+              classData.map((item, index) => (
+                <option value={item.class_id}>{item.name}</option>
+              ))}
           </select>
 
-          <input type="text" placeholder="Enter Subject" className="border border-gray-300 px-3 py-2 rounded-md w-full" />
-          <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full">
+          <input
+            onChange={updateValue}
+            name="subjectname"
+            type="text"
+            placeholder="Enter Subject"
+            className="border border-gray-300 px-3 py-2 rounded-md w-full"
+          />
+          <button
+            onClick={saveSubject}
+            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full"
+          >
             Submit
           </button>
         </div>
@@ -64,20 +149,21 @@ const SyllabusManagement = () => {
               </tr>
             </thead>
             <tbody>
-              {syllabusData.map((item, index) => (
-                <tr key={item.id} className="text-gray-800">
-                  <td className="border px-3 py-2">{index + 1}</td>
-                  <td className="border px-3 py-2">{item.id}</td>
-                  <td className="border px-3 py-2">{item.className}</td>
-                  <td className="border px-3 py-2">{item.subject}</td>
-                  <td className="border px-3 py-2">
-                    <Pencil
-                      className="w-4 h-4 text-green-600 cursor-pointer"
-                      onClick={() => handleEdit(item)}
-                    />
-                  </td>
-                </tr>
-              ))}
+              {syllabusData &&
+                syllabusData.map((item, index) => (
+                  <tr key={item.id} className="text-gray-800">
+                    <td className="border px-3 py-2">{index + 1}</td>
+                    <td className="border px-3 py-2">{item.id}</td>
+                    <td className="border px-3 py-2">{classData.filter((c)=> c.class_id==item.class_id)[0].name}</td>
+                    <td className="border px-3 py-2">{item.subject_name}</td>
+                    <td className="border px-3 py-2">
+                      <Pencil
+                        className="w-4 h-4 text-green-600 cursor-pointer"
+                        onClick={() => handleEdit(item)}
+                      />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

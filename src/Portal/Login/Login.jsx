@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/mkmce-logo.png";
-import loginLogo from "../../assets/mkmce-login.png";
+import loginLogo from "../../assets/loginbg.jpg";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -41,26 +41,24 @@ const Login = () => {
     >
       {/* Heading Outside Box */}
       {/* Title outside box */}
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center relative">
-        <span className="bg-yellow-400 px-6 py-2 rounded-xl shadow-md">
-          MKMCE PORTAL LOGIN
-        </span>
-      </h2>
+      <h1 className="text-4xl font-bold text-[#fff] mb-8 text-center relative">
+        MKMCE PORTAL LOGIN
+      </h1>
 
       {/* Login Box */}
       <div
-        className="bg-white/10 backdrop-blur-3xl p-8 rounded-2xl shadow-2xl w-full max-w-sm text-center"
+        className="bg-white/50 backdrop-blur-2xl p-12 rounded-xl shadow-2xl w-full max-w-sm text-center"
         data-aos="zoom-in"
       >
         {/* Logo */}
         <img
           src={logo}
           alt="MKMCE Logo"
-          className="w-20 h-20 mx-auto mb-4"
+          className="w-20 h-20 mx-auto mb-6"
           data-aos="fade-down"
         />
 
-        <h3 className="text-xl font-bold text-white mb-6">Login</h3>
+        {/* <h3 className="text-xl font-bold text-white mb-6">Login</h3> */}
 
         {/* Form */}
         <form className="space-y-4" onSubmit={handleLogin}>
@@ -70,7 +68,7 @@ const Login = () => {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 rounded-full bg-white/20 text-white placeholder-gray-300 focus:outline-none"
+              className="w-full px-4 py-3 rounded-2xl bg-white/20 text-white placeholder-gray-300 focus:outline-none"
               required
             />
           </div>
@@ -81,7 +79,7 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-full bg-white/20 text-white placeholder-gray-300 focus:outline-none"
+              className="w-full px-4 py-3 rounded-2xl bg-white/20 text-white placeholder-gray-300 focus:outline-none"
               required
             />
           </div>
