@@ -4,6 +4,7 @@ import EditClassModal from "./EditClassModal"; // ⬅️ Import here
 import apiRequest from "../../../services/apiService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const ClassManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -82,7 +83,7 @@ const ClassManagement = () => {
     <div className="p-4 bg-gray-100 min-h-screen">
       <ToastContainer autoClose={2000} />
       <p className="text-sm mb-2 text-gray-700">
-        Home - <span className="text-blue-500">Class Management</span>
+       <Link to='/'>Home -</Link>  <span className="text-blue-500">Class Management</span>
       </p>
 
       <div className="bg-white rounded-lg shadow-md p-4">

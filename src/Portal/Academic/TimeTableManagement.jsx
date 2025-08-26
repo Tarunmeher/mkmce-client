@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Pencil, Trash2, Printer } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TimeTableManagement = () => {
   const [day, setDay] = useState("");
@@ -78,7 +79,7 @@ const TimeTableManagement = () => {
     <div className="p-4 bg-gray-100 min-h-screen">
       {/* Breadcrumb */}
       <p className="text-sm mb-2 text-gray-700">
-        Home - <span className="text-blue-500">Time Table Management</span>
+        <Link to='/'>Home -</Link> <span className="text-blue-500">Time Table Management</span>
       </p>
 
       {/* Card */}

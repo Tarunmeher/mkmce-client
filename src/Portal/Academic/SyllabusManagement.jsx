@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pencil } from "lucide-react";
 import EditSyllabusModal from "./EditSyllabusModal"; // ⬅️ Import here
+import { Link } from "react-router-dom";
 
 const SyllabusManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +20,7 @@ const SyllabusManagement = () => {
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
       <p className="text-sm mb-2 text-gray-700">
-        Home - <span className="text-blue-500">Syllabus Management</span>
+        <Link to='/'>Home -</Link> <span className="text-blue-500">Syllabus Management</span>
       </p>
 
       <div className="bg-white rounded-lg shadow-md p-4">
